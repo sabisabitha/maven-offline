@@ -1,0 +1,71 @@
+#%RAML 1.0
+version: v1
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/d8fcc0f2-42cd-480b-869f-677d92ff6cf2/ # 
+title: flights2
+/flights2:
+ get:
+   displayName: add statical data
+   queryParameters:
+     destination:
+      required: true
+      enum: [SFO,LAX,CLE]
+   responses:
+     200:
+       body:
+         application/json:
+           example:
+                [{"id":1,  
+                "destination":"india",
+                "origin":"sfo"}, 
+                {"id":2,   
+                "destination":"hyd", 
+                "origin":"ind"}]
+ post:
+   displayName: Add the flight
+   responses:
+     200:
+       body:
+         application/json:
+           example:
+             {"Message": "flight added successfully"}
+/{ID}:
+ get:
+   displayName: get by id method
+   responses:
+     200:
+       body:
+         application/json:
+           example:
+             [{"id":1,
+             "destination":"sfo",
+             "origin":"ind"},
+             {"id":2,
+             "destination":"hyd",
+             "origin":"ind"}]
+ delete:
+   displayName: delete the data by id
+   responses:
+     201:
+       body:
+         application/json:
+           example:
+             {"message": "successful"}
+ put:
+  displayName: update the information
+  body:
+     application/json:
+      example:
+             {"id":1,
+             "destination":"sfo",
+             "origin":"ind"}
+  responses:
+    200:
+      body:
+        application/json:
+          example:
+            {"message": "data updated"}
+   
+   
+          
+
+             
